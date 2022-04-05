@@ -8,6 +8,7 @@ import 'controller/contact_controller.dart';
 
 class ContactUs extends GetView<ContactUsController> {
   ContactUsController contactUsController = Get.put(ContactUsController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

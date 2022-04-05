@@ -10,66 +10,38 @@ String categoryModelToJson(List<CategoryModel> data) => json.encode(List<dynamic
 
 class CategoryModel {
   CategoryModel({
-    this.pdf,
+    this.img,
     this.id,
-    this.categoryId,
     this.title,
-    this.subTitle,
-    this.qar,
+    this.descrption,
     this.v,
   });
 
-  Pdf? pdf;
+  Img? img;
   String? id;
-  CategoryId? categoryId;
   String? title;
-  String? subTitle;
-  String? qar;
+  String? descrption;
   int? v;
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
-    pdf: Pdf.fromJson(json["pdf"]),
+    img: Img.fromJson(json["img"]),
     id: json["_id"],
-    categoryId: CategoryId.fromJson(json["category_id"]),
     title: json["title"],
-    subTitle: json["subTitle"],
-    qar: json["qar"],
+    descrption: json["descrption"],
     v: json["__v"],
   );
 
   Map<String, dynamic> toJson() => {
-    "pdf": pdf?.toJson(),
+    "img": img!.toJson(),
     "_id": id,
-    "category_id": categoryId?.toJson(),
     "title": title,
-    "subTitle": subTitle,
-    "qar": qar,
+    "descrption": descrption,
     "__v": v,
   };
 }
 
-class CategoryId {
-  CategoryId({
-    this.id,
-    this.title,
-  });
-
-  String? id;
-  String? title;
-
-  factory CategoryId.fromJson(Map<String, dynamic> json) => CategoryId(
-    id: json["_id"],
-    title: json["title"],
-  );
-
-  Map<String, dynamic> toJson() => {
-    "_id": id,
-    "title": title,
-  };
-}
-
-class Pdf {
-  Pdf({
+class Img {
+  Img({
     this.filename,
     this.filetype,
     this.filesize,
@@ -81,7 +53,7 @@ class Pdf {
   String? filesize;
   String? url;
 
-  factory Pdf.fromJson(Map<String, dynamic> json) => Pdf(
+  factory Img.fromJson(Map<String, dynamic> json) => Img(
     filename: json["filename"],
     filetype: json["filetype"],
     filesize: json["filesize"],

@@ -12,12 +12,12 @@ class CategoryProvider{
     required this.client,
 });
 
-  Future<Object> getCategory() async{
+  Future<List<CategoryModel>> getCategory() async{
     try{
-      Response r = await client.get("/api/agreement/agreements/624aca77a21dce5cc979bc71" );
+      Response r = await client.get("/api/category/category" );
       print(r.data);
       if(r.statusCode==200){
-        return categoryModelFromJson(jsonEncode(r.data["data"][0]));
+        return categoryModelFromJson(jsonEncode(r.data["data"]));
 
       }else{
         return Future.error(r.data["error"]);

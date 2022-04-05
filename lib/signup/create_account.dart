@@ -212,14 +212,14 @@ class _CreateAccountState extends State<CreateAccount> {
                         MaterialStateProperty.all<Color>(Colors.white),
                   ),
                   onPressed: () {
-                      // Get.to(Bottom());
+                        Get.to(Bottom());
 
-                    Client register = Client();
-                    AuthEndPointProvider authPoint = AuthEndPointProvider(client: register.init());
-                    authPoint.signUp( fullname.text,  emailadd.text,  password.text);
+                    // Client register = Client();
+                    // AuthEndPointProvider authPoint = AuthEndPointProvider(client: register.init());
+                    // authPoint.signUp( fullname.text,  emailadd.text,  password.text);
 
 
-                    // register( fullname.text.toString(), emailadd.text.toString(),  password.text.toString());
+
 
                     setState(() {
                       GetUtils.isLengthGreaterThan(fullname.text, 6)
