@@ -4,9 +4,17 @@ import 'package:ninety_two/Home/home_aggrement.dart';
 import 'package:ninety_two/api_provider/client.dart';
 import 'package:ninety_two/api_provider/provider/category_provider.dart';
 import 'package:ninety_two/controllers/category_controller.dart';
+import 'package:ninety_two/model/get_agreements_model.dart';
+import 'package:ninety_two/widget/home_agree.dart';
 
 class Category extends GetView<CategoryController>{
   CategoryController categoryController = Get.put(CategoryController());
+
+
+_getCatAgreements(AgreementsModel agreementsModel){
+  Get.to(()=> HomeAgree(), arguments: agreementsModel.categoryId.id );
+
+}
 
   @override
   Widget build(BuildContext context) {
@@ -18,43 +26,43 @@ class Category extends GetView<CategoryController>{
       ),
       body: SafeArea(
           child: Scaffold(
-                   body: Column(
-                     children: [
-                       Container(
-                         padding: const EdgeInsets.all(10),
-                         height: 150,
-                         width: double.infinity,
-                         decoration: const BoxDecoration(
-                           color: const Color(0xff241C57),
-                         ),
-                         child: Container(
+                   body: SingleChildScrollView(
+                     child: Column(
+                       children: [
+                         Container(
+                           padding: const EdgeInsets.all(10),
+                           height: 150,
+                           width: double.infinity,
                            decoration: const BoxDecoration(
-                               image:   DecorationImage(
-                                   image: AssetImage(
-                                     "assets/images/white.png",
-                                   ))),
-                         ),
-                       ),
-                       SizedBox(height: 10,),
-                       Align(
-                         alignment: Alignment.centerRight,
-                         child: Container(
-                           height: 35,
-                           width: 110,
-                           alignment: Alignment.center,
-                           decoration: BoxDecoration(
-                               color: const Color(0xff241C57),
-                               borderRadius: BorderRadius.circular(10)),
-                           child:   Text(
-                             "Select Language",
-                             style: TextStyle(fontSize: 10,color: Colors.white,fontWeight: FontWeight.bold),
+                             color: const Color(0xff241C57),
+                           ),
+                           child: Container(
+                             decoration: const BoxDecoration(
+                                 image:   DecorationImage(
+                                     image: AssetImage(
+                                       "assets/images/white.png",
+                                     ))),
                            ),
                          ),
-                       ),
-                       categoryController.obx(
-                             (catstate)=> ListView.builder(
-                        physics: BouncingScrollPhysics(),
-
+                         SizedBox(height: 10,),
+                         Align(
+                           alignment: Alignment.centerRight,
+                           child: Container(
+                             height: 35,
+                             width: 110,
+                             alignment: Alignment.center,
+                             decoration: BoxDecoration(
+                                 color: const Color(0xff241C57),
+                                 borderRadius: BorderRadius.circular(10)),
+                             child:   const Text(
+                               "Select Language",
+                               style: TextStyle(fontSize: 10,color: Colors.white,fontWeight: FontWeight.bold),
+                             ),
+                           ),
+                         ),
+                         categoryController.obx(
+                               (catstate)=> ListView.builder(
+                          physics: BouncingScrollPhysics(),
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
               itemCount: catstate!.length,
@@ -64,18 +72,23 @@ class Category extends GetView<CategoryController>{
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ListTile(
-                  title:  Text(catstate[index].title!) ,
-                  leading: Container(
-                        height: 100,
-                        child: Image.network(
-                          catstate[index].img!.url!,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context,_,__)=>Container(
-                        height: 100,
-                        color: Colors.grey.shade200,
-                        child: const Text("No Image"),
+                  title:  InkWell(
+                      child: Text(catstate[index].title!),
+                  onTap: (){
+                       Get.to(()=> HomeAgreement());
+                     // _getCatAgreements(agrem);
+                  }) ,
+                  leading: SizedBox(
+                          height: 100,
+                          child: Image.network(
+                            catstate[index].img!.url!,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context,_,__)=>Container(
+                          height: 100,
+                          color: Colors.grey.shade200,
+                          child: const Text("No Image"),
+                            ),
                           ),
-                        ),
                   ),
                   subtitle:  Text(catstate[index].descrption!) ,
                 ),
@@ -86,10 +99,11 @@ class Category extends GetView<CategoryController>{
         },
 
       ),
-                         onError: (err)=>Center(child: Text(err!)),
-                         onEmpty: Center(child: Text("No Data"),)
-                       ),
-                     ],
+                           onError: (err)=>Center(child: Text(err!)),
+                           onEmpty: Center(child: Text("No Data"),)
+                         ),
+                       ],
+                     ),
                    )
 
               //     ListView(

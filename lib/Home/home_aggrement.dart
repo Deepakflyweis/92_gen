@@ -39,34 +39,34 @@ class _HomeAgreementState extends State<HomeAgreement> {
               Column(
                 children: [
                   HomeAgree(
-                    heading: "Purchase Agreement",
+                    // heading: "Purchase Agreement",
                   ),
                   HomeAgree(
-                    heading: "Real Estate Assignment Contract",
+                    // heading: "Real Estate Assignment Contract",
                   ),
                   HomeAgree(
-                    heading: "Lease Agreement",
+                    // heading: "Lease Agreement",
                   ),
                   HomeAgree(
-                    heading: "Power of Attorney",
+                    // heading: "Power of Attorney",
                   ),
                   HomeAgree(
-                    heading: "Purchase Agreement",
+                    // heading: "Purchase Agreement",
                   ),
                   HomeAgree(
-                    heading: "Purchase Agreement",
+                    // heading: "Purchase Agreement",
                   ),
                   HomeAgree(
-                    heading: "Purchase Agreement",
+                    // heading: "Purchase Agreement",
                   ),
                   HomeAgree(
-                    heading: "Purchase Agreement",
+                    // heading: "Purchase Agreement",
                   ),
                   HomeAgree(
-                    heading: "Purchase Agreement",
+                    // heading: "Purchase Agreement",
                   ),
                   HomeAgree(
-                    heading: "Purchase Agreement",
+                    // heading: "Purchase Agreement",
                   ),
                 ],
               )

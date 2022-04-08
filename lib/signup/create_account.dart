@@ -137,7 +137,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   const SizedBox(
                     height: 15,
                   ),
-                  Form(
+                   Form(
                     key: emailFormKey,
                     child: Container(
                       margin: const EdgeInsets.all(0),
@@ -216,28 +216,28 @@ class _CreateAccountState extends State<CreateAccount> {
 
                     // Client register = Client();
                     // AuthEndPointProvider authPoint = AuthEndPointProvider(client: register.init());
-                    // authPoint.signUp( fullname.text,  emailadd.text,  password.text);
+                    //   authPoint.signUp( fullname.text,  emailadd.text,  password.text);
 
 
 
 
-                    setState(() {
-                      GetUtils.isLengthGreaterThan(fullname.text, 6)
-                          ? print('Name is valid')
-
-                          : print('Name is invalid!!!');
-                      GetUtils.isPhoneNumber(password.text)
-
-                          ? print('Password')
-
-                          : print('Enter Valid Password');
-
-                      GetUtils.isEmail(emailadd.text)
-
-                          ? print('Email is valid')
-
-                          : print('Email is invalid!!!');
-                    });
+                    // setState(() {
+                    //   GetUtils.isLengthGreaterThan(fullname.text, 6)
+                    //       ? print('Name is valid')
+                    //
+                    //       : print('Name is invalid!!!');
+                    //   GetUtils.isPhoneNumber(password.text)
+                    //
+                    //       ? print('Password')
+                    //
+                    //       : print('Enter Valid Password');
+                    //
+                    //   GetUtils.isEmail(emailadd.text)
+                    //
+                    //       ? print('Email is valid')
+                    //
+                    //       : print('Email is invalid!!!');
+                    // });
 
 
 

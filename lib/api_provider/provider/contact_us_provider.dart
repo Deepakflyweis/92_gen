@@ -14,21 +14,19 @@ class ContactUsProvider{
     required this.client,
   });
 
-Future<ContactModel> getContactInfo() async{
-  try{
-    Response r = await client.get("/api/contect/contect" );
-    print(r.data);
-    if(r.statusCode==200){
-      return contactModelFromJson(jsonEncode(r.data["data"][0]));
-
-    }else{
-      return Future.error(r.data["error"]);
+ Future<ContactModel> getContactInfo() async{
+    try{
+      Response r = await client.get("/api/contect/contect" );
+      print(r.data);
+      if(r.statusCode==200){
+        return contactModelFromJson(jsonEncode(r.data["data"][0]));
+      } else{
+        return Future.error(r.data["error"]);
+      }
+    }on DioError catch (e) {
+      print(e.response!.data);
+      return Future.error(e.message);
     }
-
-  }on DioError catch (e) {
-    print(e.response!.data);
-    return Future.error(e.message);
   }
-}
 
 }

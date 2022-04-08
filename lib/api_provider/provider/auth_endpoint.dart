@@ -14,7 +14,7 @@ class AuthEndPointProvider{
   AuthEndPointProvider({required this.client});
 
  ///Sign in
-  signIn(String email,String pass) async{
+   signIn(String email,String pass) async{
     //call loading
      CommonLoader.showLoading();
     var data = {
@@ -27,12 +27,12 @@ class AuthEndPointProvider{
         print('Login sucessfully');
         CommonLoader.showSuccessDialog(title: 'Success');
          g.Get.to(()=>Bottom());
-      }else{
+      } else{
         return Future.error(r.data["error"]);
       }
     }on DioError catch(e){
-      //hide loading
-      //show error dialog
+      CommonLoader.showErrorDialog(description: e.message);
+      CommonLoader.hideLoading();
     }
   }
 
@@ -56,8 +56,8 @@ class AuthEndPointProvider{
       }
 
     }on DioError catch(e){
-      //hide loading
-      //show error dialog
+      CommonLoader.showErrorDialog(description: e.message);
+      CommonLoader.hideLoading();
     }
 
   }
@@ -80,8 +80,8 @@ class AuthEndPointProvider{
         // CommonLoader.showErrorDialog(title: 'Something went wrong...');
       }
     }on DioError catch(e){
-  //hide loading
-  //show error dialog
+      CommonLoader.showErrorDialog(description: e.message);
+      CommonLoader.hideLoading();
   }
   }
 }
